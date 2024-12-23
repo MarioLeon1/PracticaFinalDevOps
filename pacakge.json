@@ -1,0 +1,29 @@
+{
+    "name": "Práctica Final Dev Ops",
+    "version": "1.0.0",
+    "description": "Supermarket DevOps Project",
+    "scripts": {
+      "lint": "eslint .",
+      "lint:fix": "eslint . --fix",
+      "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
+      "lint:css": "stylelint \"**/*.css\"",
+      "lint:css:fix": "stylelint \"**/*.css\" --fix",
+      "precommit": "npm run lint && npm run lint:css",
+      "test": "echo \"No tests specified yet\"",
+      "build": "webpack --mode production",
+      "build:dev": "webpack --mode development",
+      "docker:build": "docker-compose build",
+      "docker:build:prod": "docker-compose -f docker-compose.prod.yml build"
+    },
+    "devDependencies": {
+      "eslint": "^8.55.0",
+      "eslint-plugin-node": "^11.1.0",
+      "prettier": "^3.1.0",
+      "stylelint": "^15.11.0",
+      "stylelint-config-standard": "^34.0.0",
+      "husky": "^8.0.3",
+      "lint-staged": "^15.2.0",
+      "webpack": "^5.89.0",
+      "webpack-cli": "^5.1.4"
+    }
+  }
