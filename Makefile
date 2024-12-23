@@ -1,19 +1,33 @@
-.PHONY: help install test lint
+.PHONY: help install dev lint test clean
 
 help:
 	@echo "Available commands:"
-	@echo "  install  - Install dependencies"
+	@echo "  install  - Install all dependencies"
+	@echo "  dev      - Start development environment"
+	@echo "  lint     - Run all linters"
 	@echo "  test     - Run tests"
-	@echo "  lint     - Run linters"
+	@echo "  clean    - Clean up environment"
 
 install:
 	@echo "Installing dependencies..."
-	# Comandos de instalación aquí
+	npm install
+	asdf install
 
-test:
-	@echo "Running tests..."
-	# Comandos de test aquí
+dev:
+	@echo "Starting development environment..."
+	docker-compose up -d
 
 lint:
 	@echo "Running linters..."
-	# Comandos de lint aquí
+	npm run lint
+	npm run lint:css
+
+test:
+	@echo "Running tests..."
+	npm test
+
+clean:
+	@echo "Cleaning up..."
+	docker-compose down
+	rm -rf node_modules
+	rm -rf dist
