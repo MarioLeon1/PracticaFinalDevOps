@@ -1,9 +1,11 @@
-services:
+version: '3.8'
 
+services:
   nginx:
     build:
       context: .
       dockerfile: docker/nginx/Dockerfile
+    image: ${DOCKER_USERNAME}/supermarket-nginx:${TAG:-latest}
     ports:
       - "80:80"
     volumes:
@@ -16,6 +18,7 @@ services:
     build:
       context: .
       dockerfile: docker/node/Dockerfile
+    image: ${DOCKER_USERNAME}/supermarket-api:${TAG:-latest}
     container_name: node-api
     volumes:
       - ./server/database.sqlite:/app/database.sqlite
@@ -23,7 +26,6 @@ services:
       - NODE_ENV=production
     ports:
       - "3000:3000"
-  
 
   prometheus:
     image: prom/prometheus:latest
