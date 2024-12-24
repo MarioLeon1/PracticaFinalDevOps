@@ -46,30 +46,38 @@ node_modules:
 		npm install; \
 	fi
 
-test: test-unit test-integration test-security test-performance
+test: node_modules
+	@echo "Running all tests..."
+	npm run test
 
-test-unit:
+test-unit: node_modules
 	@echo "Running unit tests..."
-	npx jest tests/unit/auth.test.js
+	npm run test:unit
 
-test-integration:
+test-integration: node_modules
 	@echo "Running integration tests..."
-	npx jest tests/integration/api.test.js
+	npm run test:integration
 
-test-security:
-	@echo "Running security tests..."
-	ZAP_API_KEY=$$ZAP_API_KEY npx jest tests/security/security.test.js
-
-test-performance:
-	@echo "Running performance tests..."
-	npx k6 run tests/performance/load.test.js
-
-test-coverage:
+test-coverage: node_modules
 	@echo "Running tests with coverage..."
-	npx jest --coverage
+	npm run test:coverage
 
 clean:
 	@echo "Cleaning up..."
 	docker-compose down
 	rm -rf node_modules
 	rm -rf dist
+
+.PHONY: release-patch release-minor release-major
+
+release-patch:
+	@echo "Creating patch release..."
+	npm run release:patch
+
+release-minor:
+	@echo "Creating minor release..."
+	npm run release:minor
+
+release-major:
+	@echo "Creating major release..."
+	npm run release:major
