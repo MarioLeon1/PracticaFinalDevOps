@@ -21,17 +21,19 @@
     "docker:build:prod": "docker-compose -f docker-compose.prod.yml build"
   },
   "devDependencies": {
+    "conventional-changelog-cli": "^5.0.0",
     "eslint": "^8.55.0",
     "eslint-plugin-node": "^11.1.0",
+    "husky": "^8.0.3",
+    "jest": "^29.7.0",
+    "lint-staged": "^15.2.0",
     "prettier": "^3.1.0",
+    "standard-version": "^9.5.0",
     "stylelint": "^15.11.0",
     "stylelint-config-standard": "^34.0.0",
-    "husky": "^8.0.3",
-    "lint-staged": "^15.2.0",
+    "supertest": "^6.3.3",
     "webpack": "^5.89.0",
-    "webpack-cli": "^5.1.4",
-    "jest": "^29.7.0",
-    "supertest": "^6.3.3"
+    "webpack-cli": "^5.1.4"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",

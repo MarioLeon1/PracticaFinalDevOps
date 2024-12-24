@@ -81,3 +81,21 @@ release-minor:
 release-major:
 	@echo "Creating major release..."
 	npm run release:major
+
+.PHONY: tf-init tf-plan tf-apply tf-destroy
+
+tf-init:
+	@echo "Initializing Terraform..."
+	cd terraform && terraform init
+
+tf-plan:
+	@echo "Planning Terraform changes..."
+	cd terraform && terraform plan
+
+tf-apply:
+	@echo "Applying Terraform changes..."
+	cd terraform && terraform apply -auto-approve
+
+tf-destroy:
+	@echo "Destroying Terraform infrastructure..."
+	cd terraform && terraform destroy -auto-approve
